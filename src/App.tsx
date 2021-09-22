@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import NavBar from "./components/navbar";
+import SearchBar from "./components/searchbar";
 import { LightMode } from "./shared/styles/colors";
 import font from "./shared/styles/fonts";
 
@@ -31,6 +32,7 @@ function App() {
     <Container theme={mode}>
       <Content>
         <NavBar toggleTheme={handleThemeChange} />
+        <SearchBar />
       </Content>
     </Container>
   );

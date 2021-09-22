@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import moon from "../../assets/icon-moon.svg";
+import sun from "../../assets/icon-moon.svg";
 import { LightMode} from "../../shared/styles/colors";
 const Nav = styled.nav`
     display: flex;
@@ -21,7 +21,10 @@ const NavSwitchMode = styled.div`
    color: ${LightMode.secondary_grey};
     align-self: center;
     border: 1px solid green;
-   
+    &:hover{
+       cursor: pointer;
+       color: ${LightMode.black}
+    }
 `;
 
 const NavSwitchModeText = styled.span`
@@ -31,9 +34,12 @@ const NavSwitchModeText = styled.span`
 `;
 
 const NavSwitchModeIcon = styled.img.attrs(props => ({
-    src: moon ,
+    src: sun,
 }))`
-    
+
+    &:hover{
+        fill: orange!important;
+    }
 `
 
 
