@@ -1,4 +1,4 @@
 export default {
-    base: "monospace",
-    mono: "Space Mono"
-}
+  base: 'monospace',
+  mono: 'Space Mono',
+};
