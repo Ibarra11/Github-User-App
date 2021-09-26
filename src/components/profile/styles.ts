@@ -74,7 +74,7 @@ const ProfileLinks = styled.ul`
 const ProfileLinkItem = styled.li`
   width: 40%;
   border: 1px solid green;
-  &:nth-child(2n + 1) {
+  &:nth-child(-n + 2) {
     margin-bottom: 1rem;
   }
 `;
