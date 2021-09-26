@@ -13,6 +13,8 @@ type GithubApiParamaters = {
   public_gists: number;
   followers: number;
   following: number;
+  created_at: string;
+  website: string;
 };
 
 type Nullable<T> = {
@@ -27,3 +29,8 @@ export enum Status {
 }
 export type GithubApiResponse = Nullable<GithubApiParamaters>;
 export type Cache<T> = { [key: string]: T };
+
+export type SearchBarProps = {
+  bg: string;
+  handleUserRequest: React.Dispatch<React.SetStateAction<Nullable<GithubApiParamaters> | null>>;
+};
