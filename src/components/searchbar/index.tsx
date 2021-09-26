@@ -22,21 +22,14 @@ const SearchBar = (props: Props) => {
     setSearchStatus(true);
   }
 
-  // const request = useCallback(
-  //   async <Tresponse extends unknown>(url: string, config: RequestInit = {}) => {
-  //     const response = await fetch(url, config);
-  //     const data = (await response.json()) as Tresponse;
-  //     return data;
-  //   },
-  //   [searchStatus],
-  // );
-
   useEffect(() => {
-    if (data) {
+    console.log('Status: ' + status);
+    if (data && status === 'RESOLVED') {
       console.log(data);
-    } else if (error) {
+    } else if (error && status === 'REJECTED') {
+      console.log('error: ' + JSON.stringify(error));
     }
-  }, [data, error]);
+  }, [data, error, status]);
 
   useEffect(() => {
     if (!searchStatus) return;
