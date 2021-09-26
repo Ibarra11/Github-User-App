@@ -1,9 +1,10 @@
 import React from 'react';
-import { GithubApiResponse } from '../../shared/types';
+import { GithubApiResponse, ThemeMode } from '../../shared/types';
 import Company_img from '../../assets/icon-company.svg';
 import Location_img from '../../assets/icon-location.svg';
 import Website_img from '../../assets/icon-website.svg';
 import Twitter_img from '../../assets/icon-twitter.svg';
+
 import {
   ProfileGrid,
   ProfileAvatar,
@@ -22,24 +23,21 @@ import {
   ProfileStatItemHeaderValue,
 } from './styles';
 
-const Profile = ({
-  name,
-  login,
-  avatar_url,
-  html_url,
-  company,
-  blog,
-  location,
-  email,
-  bio,
-  twitter_username,
-  public_repos,
-  public_gists,
-  followers,
-  following,
-  created_at,
-  website,
-}: GithubApiResponse) => {
+const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: ThemeMode }) => {
+  const {
+    avatar_url,
+    name,
+    login,
+    created_at,
+    bio,
+    public_repos,
+    followers,
+    following,
+    location,
+    twitter_username,
+    website,
+    company,
+  } = userData;
   return (
     <ProfileGrid>
       <ProfileAvatar src={avatar_url as string} />

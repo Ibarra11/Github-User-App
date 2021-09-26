@@ -34,3 +34,23 @@ export type SearchBarProps = {
   bg: string;
   handleUserRequest: React.Dispatch<React.SetStateAction<Nullable<GithubApiParamaters> | null>>;
 };
+
+type DarkMode = {
+  theme: string;
+  primary_blue: string;
+  white: string;
+  main_bg: string;
+  secondary_bg: string;
+};
+
+type LightMode = {
+  theme: string;
+  secondary_bg: string;
+  main_bg: string;
+  secondary_grey: string;
+  primary_blue: string;
+  secondary_blue: string;
+  black: string;
+};
+
+export type ThemeMode = LightMode | DarkMode;

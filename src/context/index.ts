@@ -1,2 +1,5 @@
 import React from 'react';
-const ThemeContext = React.createContext('light');
+import { ThemeMode } from '../shared/types';
+const ThemeContext = React.createContext<ThemeMode>({} as ThemeMode);
+
+export { ThemeContext };
