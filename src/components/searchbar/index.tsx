@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useFetch from '../../shared/hooks/useFetch';
-import { GithubApiResponse } from '../../shared/types';
+import { GithubApiResponse, SearchBarProps } from '../../shared/types';
 import { SearchBarContainer, SearchBarIcon, SearchBarInput, SearchBarButton } from './styles';
-type Props = {
-  bg: string;
-};
 
 const BASE_URL = 'https://api.github.com/users/';
 
-const SearchBar = (props: Props) => {
+const SearchBar = ({ bg, handleUserRequest }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchStatus, setSearchStatus] = useState<boolean>(false);
   const [url, setUrl] = useState('');
@@ -34,6 +31,7 @@ const SearchBar = (props: Props) => {
   useEffect(() => {
     if (data) {
       console.log(data);
+      handleUserRequest(data);
     } else if (error) {
     }
   }, [data, error]);
@@ -45,7 +43,7 @@ const SearchBar = (props: Props) => {
   }, [searchStatus]);
 
   return (
-    <SearchBarContainer bg={props.bg}>
+    <SearchBarContainer bg={bg}>
       <SearchBarIcon />
       <SearchBarInput value={searchTerm} onChange={handleSearchTermChange} />
       <SearchBarButton onClick={handleSearch}>Search</SearchBarButton>
