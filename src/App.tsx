@@ -4,7 +4,7 @@ import NavBar from './components/navbar';
 import SearchBar from './components/searchbar';
 import Profile from './components/profile';
 import { DarkMode, LightMode } from './shared/styles/themes';
-import { ThemeContext } from './context';
+
 import { GithubApiResponse, ThemeMode, Mode } from './shared/types';
 import font from './shared/styles/fonts';
 
@@ -48,9 +48,12 @@ const Container = styled.div.attrs<ThemeMode, { bg: string }>((props) => ({
   background-color: ${(props) => props.bg};
 `;
 
-const Content = styled.div`
+const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => ({
+  font_color:
+    props.theme.mode === 'light' ? props.theme.lm_primary_black : props.theme.dm_primary_white,
+}))`
   width: 50%;
   height: 50%;
-  color: ${({ theme: { black } }) => black};
+  color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
 `;
