@@ -1,16 +1,13 @@
 import React from 'react';
 
 import { Nav, NavText, NavSwitchMode, NavSwitchModeText, NavSwitchModeIcon } from './styles';
-type Props = {
-  toggleTheme: () => void;
-  bg: string;
-};
+import { NavbarProps } from '../../shared/types';
 
-const NavBar = (props: Props) => {
+const NavBar = ({ theme, toggleTheme }: NavbarProps) => {
   return (
-    <Nav bg={props.bg}>
+    <Nav>
       <NavText>devfinder</NavText>
-      <NavSwitchMode onClick={() => props.toggleTheme()}>
+      <NavSwitchMode onClick={() => toggleTheme()}>
         <NavSwitchModeText>Dark</NavSwitchModeText>
         <NavSwitchModeIcon />
       </NavSwitchMode>

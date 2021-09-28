@@ -5,7 +5,7 @@ import { SearchBarContainer, SearchBarIcon, SearchBarInput, SearchBarButton } fr
 
 const BASE_URL = 'https://api.github.com/users/';
 
-const SearchBar = ({ bg, handleUserRequest }: SearchBarProps) => {
+const SearchBar = ({ theme, handleUserRequest }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchStatus, setSearchStatus] = useState<boolean>(false);
   const [url, setUrl] = useState('');
@@ -34,11 +34,22 @@ const SearchBar = ({ bg, handleUserRequest }: SearchBarProps) => {
     setUrl(url);
   }, [searchStatus]);
 
+  if (theme.mode === 'light') {
+    var { lm_primary_white, lm_primary_blue, lm_secondary_grey } = theme;
+  } else {
+    var { dm_primary_blue, dm_primary_white, dm_secondary_blue } = theme;
+  }
   return (
-    <SearchBarContainer bg={bg}>
+    <SearchBarContainer bg={lm_primary_white || dm_secondary_blue}>
       <SearchBarIcon />
-      <SearchBarInput value={searchTerm} onChange={handleSearchTermChange} />
-      <SearchBarButton onClick={handleSearch}>Search</SearchBarButton>
+      <SearchBarInput
+        value={searchTerm}
+        placeHolderClr={lm_secondary_grey || dm_primary_white}
+        onChange={handleSearchTermChange}
+      />
+      <SearchBarButton onClick={handleSearch} btnClr={lm_primary_blue || dm_primary_blue}>
+        Search
+      </SearchBarButton>
     </SearchBarContainer>
   );
 };

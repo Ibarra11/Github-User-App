@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import NavBar from './components/navbar';
 import SearchBar from './components/searchbar';
 import Profile from './components/profile';
-// import { LightMode } from './shared/styles/colors';
 import { DarkMode, LightMode } from './shared/styles/themes';
 import { ThemeContext } from './context';
-import { GithubApiResponse, ThemeMode } from './shared/types';
+import { GithubApiResponse, ThemeMode, Mode } from './shared/types';
 import font from './shared/styles/fonts';
 
 function App() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<Mode>('light');
   const [theme, setTheme] = useState<ThemeMode>(LightMode);
   const [userData, setUserData] = useState<GithubApiResponse | null>(null);
   function handleThemeChange() {
@@ -26,23 +25,21 @@ function App() {
   }, [mode]);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <Container bg={theme.main_bg}>
-        <Content>
-          <NavBar bg={theme.secondary_bg} toggleTheme={handleThemeChange} />
-          <SearchBar bg={theme.secondary_bg} handleUserRequest={setUserData} />
-          {userData && <Profile userData={userData} theme={theme} />}
-        </Content>
-      </Container>
-    </ThemeContext.Provider>
+    <Container theme={theme}>
+      <Content theme={theme}>
+        <NavBar theme={theme} toggleTheme={handleThemeChange} />
+        <SearchBar theme={theme} handleUserRequest={setUserData} />
+        {userData && <Profile userData={userData} theme={theme} />}
+      </Content>
+    </Container>
   );
 }
 
 export default App;
 
-const Container = styled.div.attrs((props) => {
-  console.log(props);
-})`
+const Container = styled.div.attrs((props) => ({
+  bg: props.theme.main_bg_grey,
+}))`
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -54,6 +51,6 @@ const Container = styled.div.attrs((props) => {
 const Content = styled.div`
   width: 50%;
   height: 50%;
-  color: ${LightMode.black};
+  color: ${({ theme: { black } }) => black};
   font-family: ${`${font.mono} ${font.base}`};
 `;

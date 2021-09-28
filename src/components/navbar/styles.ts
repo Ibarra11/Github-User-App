@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import sun from '../../assets/icon-moon.svg';
 import { LightMode } from '../../shared/styles/colors';
 
-const Nav = styled.nav<{ bg: string }>`
+const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   height: 10%;
