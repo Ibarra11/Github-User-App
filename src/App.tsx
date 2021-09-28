@@ -37,8 +37,8 @@ function App() {
 
 export default App;
 
-const Container = styled.div.attrs((props) => ({
-  bg: props.theme.main_bg_grey,
+const Container = styled.div.attrs<ThemeMode, { bg: string }>((props) => ({
+  bg: props.theme.mode === 'light' ? props.theme.lm_primary_grey : props.theme.dm_primary_dark_blue,
 }))`
   height: 100vh;
   width: 100vw;
