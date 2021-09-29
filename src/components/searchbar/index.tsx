@@ -1,7 +1,13 @@
-import React, { useState, useEffect, PointerEvent, MouseEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import useFetch from '../../shared/hooks/useFetch';
 import { GithubApiResponse, SearchBarProps } from '../../shared/types';
-import { SearchBarContainer, SearchBarIcon, SearchBarInput, SearchBarButton } from './styles';
+import {
+  SearchBarContainer,
+  SearchBarIcon,
+  SearchBarInput,
+  SearchBarButton,
+  SearchBarError,
+} from './styles';
 
 const BASE_URL = 'https://api.github.com/users/';
 
@@ -9,16 +15,18 @@ const SearchBar = ({ theme, handleUserRequest }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchStatus, setSearchStatus] = useState(false);
   const [url, setUrl] = useState('');
-  const [status, data, error] = useFetch<GithubApiResponse>(url);
+  const [status, data, errorRes] = useFetch<GithubApiResponse>(url);
+  const [error, setError] = useState(false);
 
   function handleSearchTermChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setError(false);
     setSearchTerm(e.target.value);
   }
 
   function handleSearch(
     e: React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>,
   ) {
-    function isPointerEvent(valueToTest: any): valueToTest is MouseEvent<HTMLButtonElement> {
+    function isPointerEvent(valueToTest: any): valueToTest is React.MouseEvent<HTMLButtonElement> {
       if (valueToTest.type === 'click') return true;
       else return false;
     }
@@ -34,12 +42,13 @@ const SearchBar = ({ theme, handleUserRequest }: SearchBarProps) => {
 
   useEffect(() => {
     if (data && status === 'RESOLVED') {
-      console.log(data);
-
       handleUserRequest(data);
-    } else if (error) {
+      setSearchStatus(false);
+    } else if (status === 'REJECTED') {
+      setError(true);
+      setSearchStatus(false);
     }
-  }, [data, error, handleUserRequest, status]);
+  }, [data, errorRes, handleUserRequest, status]);
 
   useEffect(() => {
     if (!searchStatus) return;
@@ -52,6 +61,7 @@ const SearchBar = ({ theme, handleUserRequest }: SearchBarProps) => {
   } else {
     var { dm_primary_blue, dm_primary_white, dm_secondary_blue } = theme;
   }
+
   return (
     <SearchBarContainer bg={lm_primary_white || dm_secondary_blue} onKeyPress={handleSearch}>
       <SearchBarIcon />
@@ -60,6 +70,7 @@ const SearchBar = ({ theme, handleUserRequest }: SearchBarProps) => {
         placeHolderClr={lm_secondary_grey || dm_primary_white}
         onChange={handleSearchTermChange}
       />
+      {error ? <SearchBarError>{errorRes}</SearchBarError> : null}
       <SearchBarButton
         type="submit"
         onClick={handleSearch}

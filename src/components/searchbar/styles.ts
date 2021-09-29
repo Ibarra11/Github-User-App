@@ -34,6 +34,13 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
   }
 `;
 
+const SearchBarError = styled.span`
+  color: #f94144;
+  font-weight: 700;
+  position: relative;
+  right: 1rem;
+`;
+
 const SearchBarButton = styled.button<{ btnClr: string }>`
   flex-grow: 1;
   font-family: inherit;
@@ -50,4 +57,4 @@ const SearchBarButton = styled.button<{ btnClr: string }>`
   }
 `;
 
-export { SearchBarContainer, SearchBarIcon, SearchBarInput, SearchBarButton };
+export { SearchBarContainer, SearchBarIcon, SearchBarInput, SearchBarButton, SearchBarError };

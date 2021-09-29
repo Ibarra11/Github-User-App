@@ -21,11 +21,12 @@ const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
         const data = (await response.json()) as TResponse;
         setData(data);
         setStatus(Status.resolved);
+        setStatus(Status.idle);
       } catch (error: unknown) {
         if (error instanceof Error) {
-          setStatus(Status.rejected);
-          console.log(error.message);
           setError(error.message);
+          setStatus(Status.rejected);
+          setStatus(Status.idle);
         }
       }
     }
