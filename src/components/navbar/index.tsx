@@ -17,7 +17,7 @@ const NavBar = ({ theme, toggleTheme }: NavbarProps) => {
         toggleHoverColor={lm_primary_black || dm_secondary_blue}
         onClick={() => toggleTheme()}
       >
-        <NavSwitchModeText>Dark</NavSwitchModeText>
+        <NavSwitchModeText>{theme.mode === 'light' ? 'dark' : 'light'}</NavSwitchModeText>
         <NavSwitchModeIcon themeMode={theme.mode} />
       </NavSwitchMode>
     </Nav>

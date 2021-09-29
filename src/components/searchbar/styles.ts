@@ -9,6 +9,7 @@ const SearchBarContainer = styled.div<{ bg: string }>`
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   background-color: ${(props) => props.bg};
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 8px;
 `;
 const SearchBarIcon = styled.img.attrs<{ placeHolderClr: string }>((props) => ({
   src: SearchIcon,
@@ -24,6 +25,7 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
   background: transparent;
   margin-left: 1rem;
   height: 80%;
+  color: inherit;
   &:focus {
     outline: none;
   }
