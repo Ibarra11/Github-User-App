@@ -46,6 +46,7 @@ const SearchBarButton = styled.button<{ btnClr: string }>`
   text-decoration: none;
   &:hover {
     cursor: pointer;
+    filter: sepia(0.25);
   }
 `;
 

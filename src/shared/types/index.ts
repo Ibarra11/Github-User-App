@@ -1,3 +1,4 @@
+import React from 'react';
 type GithubApiParamaters = {
   name: string;
   login: string;
