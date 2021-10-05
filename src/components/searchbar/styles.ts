@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SearchIcon from '../../assets/icon-search.svg';
-import { LightMode } from '../../shared/styles/colors';
+import { LightMode, DarkMode } from '../../shared/styles/themes';
 const SearchBarContainer = styled.div<{ bg: string }>`
   display: flex;
   height: 10%;
@@ -48,7 +48,7 @@ const SearchBarButton = styled.button<{ btnClr: string }>`
   height: 90%;
   font-size: 1.25rem;
   background-color: ${(props) => props.btnClr};
-  color: ${LightMode.white};
+  color: ${LightMode.lm_primary_white};
   border: none;
   text-decoration: none;
   &:hover {

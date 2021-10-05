@@ -38,8 +38,21 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
     website,
     company,
   } = userData;
+
+  let statsBg;
+  let profileBg;
+  if (theme.mode === 'light') {
+    profileBg = theme.lm_primary_white;
+    statsBg = theme.lm_primary_grey;
+  } else {
+    profileBg = theme.dm_secondary_blue;
+    statsBg = theme.dm_primary_dark_blue;
+  }
+
+  console.log(statsBg);
+
   return (
-    <ProfileGrid>
+    <ProfileGrid bgColor={profileBg}>
       <ProfileAvatar src={avatar_url as string} />
       <ProfileHeading>
         <ProfileHeadingMain>{name || login}</ProfileHeadingMain>
@@ -47,7 +60,7 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
         <ProfileHeadingUsername>{login}</ProfileHeadingUsername>
       </ProfileHeading>
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
-      <ProfileStats>
+      <ProfileStats bg={statsBg}>
         <ProfileStatItem>
           <ProfileStatItemHeader>Repos</ProfileStatItemHeader>
           <ProfileStatItemHeaderValue>{public_repos}</ProfileStatItemHeaderValue>

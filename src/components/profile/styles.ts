@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-
-const ProfileGrid = styled.div`
+import { LightMode, DarkMode } from '../../shared/styles/themes';
+const ProfileGrid = styled.div<{ bgColor: string }>`
+  background-color: ${(props) => props.bgColor};
   display: grid;
-  border: 1px solid red;
   padding: 2rem;
   height: 100%;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 35% 15% 20% 30%;
+  margin-top: 32px;
   column-gap: 2rem;
   & > * {
     grid-column: 2/3;
@@ -42,13 +43,12 @@ const ProfileHeadingUsername = styled.h3`
 
 const ProfileBio = styled.p``;
 
-const ProfileStats = styled.div`
-  border: 1px solid green;
+const ProfileStats = styled.div<{ bg: string }>`
   display: flex;
+  background-color: ${(props) => props.bg};
 `;
 const ProfileStatItem = styled.div`
   flex-grow: 1;
-  border: 1px solid orange;
   padding: 1rem 1rem;
   display: flex;
   justify-content: center;
