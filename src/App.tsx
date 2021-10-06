@@ -40,11 +40,9 @@ export default App;
 const Container = styled.div.attrs<ThemeMode, { bg: string }>((props) => ({
   bg: props.theme.mode === 'light' ? props.theme.lm_primary_grey : props.theme.dm_primary_dark_blue,
 }))`
-  height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  position: relative;
   background-color: ${(props) => props.bg};
 `;
 
@@ -52,8 +50,15 @@ const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => (
   font_color:
     props.theme.mode === 'light' ? props.theme.lm_primary_black : props.theme.dm_primary_white,
 }))`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 5%;
   width: 50%;
-  height: 50%;
+
   color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
 `;

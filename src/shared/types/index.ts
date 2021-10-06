@@ -63,3 +63,5 @@ type LightMode = {
 };
 
 export type ThemeMode = LightMode | DarkMode;
+
+export type Icon = 'icon_twitter' | 'icon_location' | 'icon_website' | 'icon_company';

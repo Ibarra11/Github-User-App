@@ -1,9 +1,5 @@
 import React from 'react';
 import { GithubApiResponse, ThemeMode } from '../../shared/types';
-import Company_img from '../../assets/icon-company.svg';
-import Location_img from '../../assets/icon-location.svg';
-import Website_img from '../../assets/icon-website.svg';
-import Twitter_img from '../../assets/icon-twitter.svg';
 
 import {
   ProfileGrid,
@@ -41,23 +37,39 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
 
   let statsBg;
   let profileBg;
+  let profileUsernameColor;
+  let joinDate;
   if (theme.mode === 'light') {
     profileBg = theme.lm_primary_white;
     statsBg = theme.lm_primary_grey;
+    profileUsernameColor = theme.lm_primary_blue;
   } else {
     profileBg = theme.dm_secondary_blue;
     statsBg = theme.dm_primary_dark_blue;
+    profileUsernameColor = theme.dm_primary_blue;
   }
 
-  console.log(statsBg);
+  if (created_at) {
+    joinDate = new Date(created_at)
+      .toDateString()
+      .split(' ')
+      .slice(1)
+      .reduce((prevValue, currValue, currentIndex) => {
+        if (currentIndex !== 1) {
+          return prevValue + ' ' + currValue;
+        } else {
+          return currValue + ' ' + prevValue;
+        }
+      });
+  }
 
   return (
-    <ProfileGrid bgColor={profileBg}>
+    <ProfileGrid bgColor={profileBg} theme={theme}>
       <ProfileAvatar src={avatar_url as string} />
-      <ProfileHeading>
+      <ProfileHeading fontColor={'#697C9A'}>
         <ProfileHeadingMain>{name || login}</ProfileHeadingMain>
-        <ProfileHeadingDate>{created_at}</ProfileHeadingDate>
-        <ProfileHeadingUsername>{login}</ProfileHeadingUsername>
+        <ProfileHeadingDate>Joined {joinDate}</ProfileHeadingDate>
+        <ProfileHeadingUsername>@{login}</ProfileHeadingUsername>
       </ProfileHeading>
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
       <ProfileStats bg={statsBg}>
@@ -74,21 +86,21 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
           <ProfileStatItemHeaderValue>{following}</ProfileStatItemHeaderValue>
         </ProfileStatItem>
       </ProfileStats>
-      <ProfileLinks>
+      <ProfileLinks themeMode={theme.mode}>
         <ProfileLinkItem>
-          <ProfileLinkImg src={Location_img} />
+          <ProfileLinkImg icon={'icon_location'} />
           <ProfileLinkText>{location || 'Not Available'}</ProfileLinkText>
         </ProfileLinkItem>
         <ProfileLinkItem>
-          <ProfileLinkImg src={Twitter_img} />
+          <ProfileLinkImg icon={'icon_twitter'} />
           <ProfileLinkText>{twitter_username || 'Not Available'}</ProfileLinkText>
         </ProfileLinkItem>
         <ProfileLinkItem>
-          <ProfileLinkImg src={Website_img} />
+          <ProfileLinkImg icon={'icon_website'} />
           <ProfileLinkText>{website || 'Not Available'}</ProfileLinkText>
         </ProfileLinkItem>
         <ProfileLinkItem>
-          <ProfileLinkImg src={Company_img} />
+          <ProfileLinkImg icon={'icon_company'} />
           <ProfileLinkText>{company || 'Not Available'}</ProfileLinkText>
         </ProfileLinkItem>
       </ProfileLinks>

@@ -3,10 +3,13 @@ import SearchIcon from '../../assets/icon-search.svg';
 import { LightMode, DarkMode } from '../../shared/styles/themes';
 const SearchBarContainer = styled.div<{ bg: string }>`
   display: flex;
-  height: 10%;
+
   margin-top: 2rem;
   align-items: center;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
   background-color: ${(props) => props.bg};
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 8px;
@@ -45,7 +48,7 @@ const SearchBarButton = styled.button<{ btnClr: string }>`
   flex-grow: 1;
   font-family: inherit;
   border-radius: 0.5rem;
-  height: 90%;
+  padding: 0.5rem 0;
   font-size: 1.25rem;
   background-color: ${(props) => props.btnClr};
   color: ${LightMode.lm_primary_white};
