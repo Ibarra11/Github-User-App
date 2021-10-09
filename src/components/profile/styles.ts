@@ -47,10 +47,9 @@ const ProfileAvatar = styled.img`
 
 const ProfileBio = styled.p`
   font-size: 0.7rem;
-
   line-height: 1.45;
   grid-column: 1/3;
-  margin: 0;
+  margin: 8px;
 `;
 
 export { ProfileGrid, ProfileAvatar, ProfileBio };

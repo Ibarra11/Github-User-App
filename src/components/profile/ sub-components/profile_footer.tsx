@@ -16,19 +16,19 @@ const ProfileFooter = ({ themeMode, location, twitter_username, website, company
   return (
     <Wrapper themeMode={themeMode}>
       <ProfileLinkItem>
-        <ProfileLinkImg icon={'icon_location'} />
+        <LocationIcon />
         <ProfileLinkText>{location || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
       <ProfileLinkItem>
-        <ProfileLinkImg icon={'icon_twitter'} />
+        <TwitterIcon />
         <ProfileLinkText>{twitter_username || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
       <ProfileLinkItem>
-        <ProfileLinkImg icon={'icon_website'} />
+        <WebsiteIcon />
         <ProfileLinkText>{website || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
       <ProfileLinkItem>
-        <ProfileLinkImg icon={'icon_company'} />
+        <CompanyIcon />
         <ProfileLinkText>{company || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
     </Wrapper>
@@ -41,6 +41,8 @@ const Wrapper = styled.footer<{ themeMode: string }>`
   grid-template-columns: 1fr;
   padding: 0;
   margin-bottom: 0;
+  margin-top: 16px;
+  border: 1px solid red;
   span {
     filter: brightness(${(props) => (props.themeMode === 'dark' ? 0 : 1)})
       invert(${(props) => (props.themeMode === 'dark' ? 1 : 0)});
@@ -54,29 +56,32 @@ const ProfileLinkItem = styled.div`
   margin-bottom: 8px;
 `;
 
-const ProfileLinkImg = styled.span.attrs<{ icon: Icon }, { bg: string }>((props) => {
-  switch (props.icon) {
-    case 'icon_location':
-      return { bg: location_icon };
-    case 'icon_website':
-      return { bg: website_icon };
-    case 'icon_company':
-      return { bg: company_icon };
-    case 'icon_twitter':
-      return { bg: twitter_icon };
-  }
-})<{ icon: Icon }>`
+const ProfileLinkText = styled.a`
+  font-size: 0.6rem;
+`;
+
+const ProfileLinkIcon = styled.span`
   display: inline-block;
   height: 14px;
   width: 14px;
   margin-right: 6px;
-  background-image: url(${(props) => props.bg});
   background-size: contain;
   background-repeat: no-repeat;
 `;
 
-const ProfileLinkText = styled.a`
-  font-size: 0.6rem;
+const TwitterIcon = styled(ProfileLinkIcon)`
+  background-image: url(${twitter_icon});
+`;
+
+const LocationIcon = styled(ProfileLinkIcon)`
+  background-image: url(${location_icon});
+`;
+
+const WebsiteIcon = styled(ProfileLinkIcon)`
+  background-image: url(${website_icon});
+`;
+const CompanyIcon = styled(ProfileLinkIcon)`
+  background-image: url(${company_icon});
 `;
 
 export default ProfileFooter;
