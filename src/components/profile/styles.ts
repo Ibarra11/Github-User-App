@@ -107,8 +107,8 @@ const ProfileLinks = styled.ul<{ themeMode: string }>`
     margin-bottom: 8px;
   }
   span {
-    filter: invert(93%) sepia(100%) saturate(0%) hue - rotate(244deg) brightness(107%)
-      contrast(110%);
+    filter: brightness(${(props) => (props.themeMode === 'dark' ? 0 : 1)})
+      invert(${(props) => (props.themeMode === 'dark' ? 1 : 0)});
   }
 `;
 
