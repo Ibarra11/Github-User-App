@@ -11,11 +11,23 @@ const Nav = styled.nav`
 `;
 
 const NavText = styled.h1`
-  font-size: 26px;
   font-weight: 700;
   line-height: 38px;
   margin: 0;
   align-self: center;
+  font-size: 0.9rem;
+  @media (min-width: 1200px) {
+    font-size: 2.25rem;
+  }
+  @media (min-width: 992px) AND (max-width: 1199px) {
+    font-size: 1.85rem;
+  }
+  @media (min-width: 768px) AND (max-width: 991px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 576px) AND (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 
 const NavSwitchMode = styled.div<{ toggleColor: string; toggleHoverColor: string }>`
@@ -25,6 +37,7 @@ const NavSwitchMode = styled.div<{ toggleColor: string; toggleHoverColor: string
   width: 100px;
   height: 100%;
   align-items: center;
+  justify-content: flex-end;
   &:hover {
     cursor: pointer;
     color: ${(props) => props.toggleHoverColor};
@@ -38,16 +51,55 @@ const NavSwitchMode = styled.div<{ toggleColor: string; toggleHoverColor: string
 const NavSwitchModeText = styled.span`
   display: inline-block;
   text-transform: uppercase;
-  margin-right: 0.5rem;
+
   letter-spacing: 0.1rem;
+  font-size: 0.5rem;
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+  }
+  @media (min-width: 992px) AND (max-width: 1199px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 768px) AND (max-width: 991px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 576px) AND (max-width: 767px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const NavSwitchModeIcon = styled.span<{ themeMode: Mode }>`
   display: inline-block;
   background-image: url(${(props) => (props.themeMode === 'light' ? moon_icon : sun_icon)});
-  background-size: cover;
-  width: 24px;
-  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  bottom: 2px;
+  margin-left: 8px;
+  @media (min-width: 1200px) {
+    width: 36px;
+    height: 36px;
+    margin-left: 0.75rem;
+  }
+
+  @media (min-width: 992px) AND (max-width: 1199px) {
+    width: 28px;
+    height: 28px;
+    margin-left: 0.75rem;
+  }
+
+  @media (min-width: 768px) AND (max-width: 991px) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (min-width: 576px) AND (max-width: 767px) {
+    width: 12px;
+    height: 12px;
+    margin-left: 0.5rem;
+  }
 `;
 
 export { Nav, NavText, NavSwitchMode, NavSwitchModeText, NavSwitchModeIcon };

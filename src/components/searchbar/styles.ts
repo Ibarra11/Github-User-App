@@ -2,14 +2,12 @@ import styled from 'styled-components';
 import SearchIcon from '../../assets/icon-search.svg';
 import { LightMode, DarkMode } from '../../shared/styles/themes';
 const SearchBarContainer = styled.div<{ bg: string }>`
+  position: relative;
   display: flex;
 
   margin-top: 2rem;
   align-items: center;
-
-  padding-left: 1.5rem;
-  padding-right: 1rem;
-  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  padding: 4px 4px 4px 12px;
   background-color: ${(props) => props.bg};
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 8px;
@@ -17,7 +15,7 @@ const SearchBarContainer = styled.div<{ bg: string }>`
 const SearchBarIcon = styled.img.attrs<{ placeHolderClr: string }>((props) => ({
   src: SearchIcon,
 }))`
-  height: 50%;
+  height: 16px;
 `;
 
 const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) => ({
@@ -26,9 +24,9 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
   flex-grow: 4;
   border: none;
   background: transparent;
-  margin-left: 1rem;
-  height: 80%;
+  margin-left: 6px;
   color: inherit;
+  font-size: 0.75rem;
   &:focus {
     outline: none;
   }
@@ -40,16 +38,19 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
 const SearchBarError = styled.span`
   color: #f94144;
   font-weight: 700;
-  position: relative;
-  right: 1rem;
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 const SearchBarButton = styled.button<{ btnClr: string }>`
   flex-grow: 1;
   font-family: inherit;
   border-radius: 0.5rem;
-  padding: 0.5rem 0;
-  font-size: 1.25rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
   background-color: ${(props) => props.btnClr};
   color: ${LightMode.lm_primary_white};
   border: none;

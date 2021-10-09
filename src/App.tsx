@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import GlobalStyles from './shared/styles/global';
 import NavBar from './components/navbar';
 import SearchBar from './components/searchbar';
 import Profile from './components/profile';
 import { DarkMode, LightMode } from './shared/styles/themes';
-
 import { GithubApiResponse, ThemeMode, Mode } from './shared/types';
 import font from './shared/styles/fonts';
 
@@ -26,6 +26,7 @@ function App() {
 
   return (
     <Container theme={theme}>
+      <GlobalStyles />
       <Content theme={theme}>
         <NavBar theme={theme} toggleTheme={handleThemeChange} />
         <SearchBar theme={theme} handleUserRequest={setUserData} />
@@ -57,8 +58,7 @@ const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => (
   right: 0;
   margin: auto;
   padding-top: 5%;
-  width: 50%;
-
+  width: 90%;
   color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
 `;
