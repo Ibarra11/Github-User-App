@@ -24,17 +24,17 @@ const ProfileGrid = styled.div.attrs<
   bgColor: string;
   theme: ThemeMode;
 }>`
+  min-height: 300px;
   background-color: ${(props) => props.bgColor};
   display: grid;
-  padding: 2rem;
+  padding: 24px 16px;
+  padding-bottom: 48px;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 25% 20% 20% 35%;
-  margin-top: 32px;
-  column-gap: 2rem;
+  grid-template-rows: auto;
+  margin-top: 16px;
+  column-gap: 12px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  & > * {
-    grid-column: 2/3;
-  }
+
   h4,
   p {
     color: ${(props) => props.fontColor};
@@ -46,66 +46,48 @@ const ProfileGrid = styled.div.attrs<
 
 const ProfileAvatar = styled.img`
   border-radius: 50%;
-  width: 100%;
-  grid-column: 1;
-  grid-row: 1;
+  width: 64px;
+  grid-column: 1/2;
 `;
 
-const ProfileHeading = styled.div<{ fontColor: string }>`
-  position: relative;
-`;
+const ProfileBio = styled.p`
+  font-size: 0.7rem;
 
-const ProfileHeadingMain = styled.h1`
-  margin: 0.5rem 0;
-`;
-const ProfileHeadingDate = styled.p`
-  position: absolute;
-  font-size: 0.8rem;
-  top: 0;
-  right: 0;
-`;
-
-const ProfileHeadingUsername = styled.h3`
+  line-height: 1.45;
+  grid-column: 1/3;
   margin: 0;
-  font-size: 1rem;
 `;
-
-const ProfileBio = styled.p``;
 
 const ProfileStats = styled.div<{ bg: string }>`
   display: flex;
+  grid-column: 1/3;
   background-color: ${(props) => props.bg};
 `;
 const ProfileStatItem = styled.div`
   flex-grow: 1;
-  padding: 1rem 1rem;
 
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 `;
 const ProfileStatItemHeader = styled.h4`
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
 `;
 const ProfileStatItemHeaderValue = styled.h2`
   margin: 0;
   margin-top: 0.25rem;
-  font-size: 1.25rem;
+  font-size: 0.75rem;
 `;
 
 const ProfileLinks = styled.ul<{ themeMode: string }>`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns: 1fr;
   list-style-type: none;
   padding: 0;
   margin-bottom: 0;
-  align-content: center;
-  li:nth-child(-n + 2) {
-    margin-bottom: 8px;
-  }
   span {
     filter: brightness(${(props) => (props.themeMode === 'dark' ? 0 : 1)})
       invert(${(props) => (props.themeMode === 'dark' ? 1 : 0)});
@@ -113,11 +95,11 @@ const ProfileLinks = styled.ul<{ themeMode: string }>`
 `;
 
 const ProfileLinkItem = styled.li`
-  width: 40%;
+  width: 100%;
+
   display: flex;
   align-items: center;
-  margin: 0;
-  height: 25%;
+  margin-bottom: 8px;
 `;
 
 const ProfileLinkImg = styled.span.attrs<{ icon: Icon }, { bg: string }>((props) => {
@@ -133,16 +115,16 @@ const ProfileLinkImg = styled.span.attrs<{ icon: Icon }, { bg: string }>((props)
   }
 })<{ icon: Icon }>`
   display: inline-block;
-  height: 20px;
-  width: 20px;
-  margin-right: 10px;
+  height: 14px;
+  width: 14px;
+  margin-right: 6px;
   background-image: url(${(props) => props.bg});
   background-size: contain;
   background-repeat: no-repeat;
 `;
 
 const ProfileLinkText = styled.a`
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 `;
 
 export {
@@ -151,10 +133,6 @@ export {
   ProfileLinks,
   ProfileStats,
   ProfileBio,
-  ProfileHeading,
-  ProfileHeadingDate,
-  ProfileHeadingMain,
-  ProfileHeadingUsername,
   ProfileLinkImg,
   ProfileLinkItem,
   ProfileLinkText,

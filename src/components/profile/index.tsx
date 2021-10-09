@@ -1,16 +1,12 @@
 import React from 'react';
 import { GithubApiResponse, ThemeMode } from '../../shared/types';
-
+import ProfileHeader from './ sub-components/profile_header';
 import {
   ProfileGrid,
   ProfileAvatar,
   ProfileLinks,
   ProfileStats,
   ProfileBio,
-  ProfileHeading,
-  ProfileHeadingDate,
-  ProfileHeadingMain,
-  ProfileHeadingUsername,
   ProfileLinkImg,
   ProfileLinkItem,
   ProfileLinkText,
@@ -66,11 +62,7 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
   return (
     <ProfileGrid bgColor={profileBg} theme={theme}>
       <ProfileAvatar src={avatar_url as string} />
-      <ProfileHeading fontColor={'#697C9A'}>
-        <ProfileHeadingMain>{name || login}</ProfileHeadingMain>
-        <ProfileHeadingDate>Joined {joinDate}</ProfileHeadingDate>
-        <ProfileHeadingUsername>@{login}</ProfileHeadingUsername>
-      </ProfileHeading>
+      <ProfileHeader name={name} username={login} joinDate={created_at} />
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
       <ProfileStats bg={statsBg}>
         <ProfileStatItem>
