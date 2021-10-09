@@ -58,29 +58,6 @@ const ProfileBio = styled.p`
   margin: 0;
 `;
 
-const ProfileStats = styled.div<{ bg: string }>`
-  display: flex;
-  grid-column: 1/3;
-  background-color: ${(props) => props.bg};
-`;
-const ProfileStatItem = styled.div`
-  flex-grow: 1;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-`;
-const ProfileStatItemHeader = styled.h4`
-  margin: 0;
-  font-size: 0.5rem;
-`;
-const ProfileStatItemHeaderValue = styled.h2`
-  margin: 0;
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-`;
-
 const ProfileLinks = styled.ul<{ themeMode: string }>`
   grid-column: 1/3;
   display: grid;
@@ -131,12 +108,8 @@ export {
   ProfileGrid,
   ProfileAvatar,
   ProfileLinks,
-  ProfileStats,
   ProfileBio,
   ProfileLinkImg,
   ProfileLinkItem,
   ProfileLinkText,
-  ProfileStatItem,
-  ProfileStatItemHeader,
-  ProfileStatItemHeaderValue,
 };

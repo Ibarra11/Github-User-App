@@ -1,18 +1,15 @@
 import React from 'react';
 import { GithubApiResponse, ThemeMode } from '../../shared/types';
 import ProfileHeader from './ sub-components/profile_header';
+import ProfileStats from './ sub-components/profile_stats';
 import {
   ProfileGrid,
   ProfileAvatar,
   ProfileLinks,
-  ProfileStats,
   ProfileBio,
   ProfileLinkImg,
   ProfileLinkItem,
   ProfileLinkText,
-  ProfileStatItem,
-  ProfileStatItemHeader,
-  ProfileStatItemHeaderValue,
 } from './styles';
 
 const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: ThemeMode }) => {
@@ -34,7 +31,6 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
   let statsBg;
   let profileBg;
   let profileUsernameColor;
-  let joinDate;
   if (theme.mode === 'light') {
     profileBg = theme.lm_primary_white;
     statsBg = theme.lm_primary_grey;
@@ -45,39 +41,13 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
     profileUsernameColor = theme.dm_primary_blue;
   }
 
-  if (created_at) {
-    joinDate = new Date(created_at)
-      .toDateString()
-      .split(' ')
-      .slice(1)
-      .reduce((prevValue, currValue, currentIndex) => {
-        if (currentIndex !== 1) {
-          return prevValue + ' ' + currValue;
-        } else {
-          return currValue + ' ' + prevValue;
-        }
-      });
-  }
-
   return (
     <ProfileGrid bgColor={profileBg} theme={theme}>
       <ProfileAvatar src={avatar_url as string} />
       <ProfileHeader name={name} username={login} joinDate={created_at} />
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
-      <ProfileStats bg={statsBg}>
-        <ProfileStatItem>
-          <ProfileStatItemHeader>Repos</ProfileStatItemHeader>
-          <ProfileStatItemHeaderValue>{public_repos}</ProfileStatItemHeaderValue>
-        </ProfileStatItem>
-        <ProfileStatItem>
-          <ProfileStatItemHeader>Followers</ProfileStatItemHeader>
-          <ProfileStatItemHeaderValue>{followers}</ProfileStatItemHeaderValue>
-        </ProfileStatItem>
-        <ProfileStatItem>
-          <ProfileStatItemHeader>Following</ProfileStatItemHeader>
-          <ProfileStatItemHeaderValue>{following}</ProfileStatItemHeaderValue>
-        </ProfileStatItem>
-      </ProfileStats>
+      <ProfileStats bg={statsBg} repos={public_repos} followers={followers} following={following} />
+
       <ProfileLinks themeMode={theme.mode}>
         <ProfileLinkItem>
           <ProfileLinkImg icon={'icon_location'} />

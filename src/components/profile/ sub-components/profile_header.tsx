@@ -6,11 +6,27 @@ type Props = {
   joinDate: string | null;
 };
 const ProfileHeader = ({ name, username, joinDate }: Props) => {
+  function formatJoinDate(date: string) {
+    return new Date(date)
+      .toDateString()
+      .split(' ')
+      .slice(1)
+      .reduce((prevValue, currValue, currentIndex) => {
+        if (currentIndex !== 1) {
+          return prevValue + ' ' + currValue;
+        } else {
+          return currValue + ' ' + prevValue;
+        }
+      });
+  }
+
+  const formattedDate = formatJoinDate(joinDate as string);
+
   return (
     <Wrapper>
       <ProfileHeadingMain>{name}</ProfileHeadingMain>
       <ProfileHeadingUsername>@{username}</ProfileHeadingUsername>
-      <ProfileHeadingDate>Joined {joinDate}</ProfileHeadingDate>
+      <ProfileHeadingDate>Joined {formattedDate}</ProfileHeadingDate>
     </Wrapper>
   );
 };
