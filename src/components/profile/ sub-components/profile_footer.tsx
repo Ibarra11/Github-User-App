@@ -15,19 +15,19 @@ type Props = {
 const ProfileFooter = ({ themeMode, location, twitter_username, website, company }: Props) => {
   return (
     <Wrapper themeMode={themeMode}>
-      <ProfileLinkItem>
+      <ProfileLinkItem gridArea={'location'}>
         <LocationIcon />
         <ProfileLinkText>{location || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
-      <ProfileLinkItem>
+      <ProfileLinkItem gridArea={'twitter'}>
         <TwitterIcon />
         <ProfileLinkText>{twitter_username || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
-      <ProfileLinkItem>
+      <ProfileLinkItem gridArea={'website'}>
         <WebsiteIcon />
         <ProfileLinkText>{website || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
-      <ProfileLinkItem>
+      <ProfileLinkItem gridArea={'company'}>
         <CompanyIcon />
         <ProfileLinkText>{company || 'Not Available'}</ProfileLinkText>
       </ProfileLinkItem>
@@ -39,6 +39,11 @@ const Wrapper = styled.footer<{ themeMode: string }>`
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-areas:
+    'location'
+    'website'
+    'twitter'
+    'company';
   padding: 0;
   margin-bottom: 0;
   margin-top: 16px;
@@ -49,11 +54,12 @@ const Wrapper = styled.footer<{ themeMode: string }>`
   }
 `;
 
-const ProfileLinkItem = styled.div`
+const ProfileLinkItem = styled.div<{ gridArea: string }>`
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  grid-area: ${(p) => p.gridArea};
 `;
 
 const ProfileLinkText = styled.a`
