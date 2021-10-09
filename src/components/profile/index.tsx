@@ -2,15 +2,8 @@ import React from 'react';
 import { GithubApiResponse, ThemeMode } from '../../shared/types';
 import ProfileHeader from './ sub-components/profile_header';
 import ProfileStats from './ sub-components/profile_stats';
-import {
-  ProfileGrid,
-  ProfileAvatar,
-  ProfileLinks,
-  ProfileBio,
-  ProfileLinkImg,
-  ProfileLinkItem,
-  ProfileLinkText,
-} from './styles';
+import ProfileFooter from './ sub-components/profile_footer';
+import { ProfileGrid, ProfileAvatar, ProfileBio } from './styles';
 
 const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: ThemeMode }) => {
   const {
@@ -47,25 +40,13 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
       <ProfileHeader name={name} username={login} joinDate={created_at} />
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
       <ProfileStats bg={statsBg} repos={public_repos} followers={followers} following={following} />
-
-      <ProfileLinks themeMode={theme.mode}>
-        <ProfileLinkItem>
-          <ProfileLinkImg icon={'icon_location'} />
-          <ProfileLinkText>{location || 'Not Available'}</ProfileLinkText>
-        </ProfileLinkItem>
-        <ProfileLinkItem>
-          <ProfileLinkImg icon={'icon_twitter'} />
-          <ProfileLinkText>{twitter_username || 'Not Available'}</ProfileLinkText>
-        </ProfileLinkItem>
-        <ProfileLinkItem>
-          <ProfileLinkImg icon={'icon_website'} />
-          <ProfileLinkText>{website || 'Not Available'}</ProfileLinkText>
-        </ProfileLinkItem>
-        <ProfileLinkItem>
-          <ProfileLinkImg icon={'icon_company'} />
-          <ProfileLinkText>{company || 'Not Available'}</ProfileLinkText>
-        </ProfileLinkItem>
-      </ProfileLinks>
+      <ProfileFooter
+        themeMode={theme.mode}
+        location={location}
+        twitter_username={twitter_username}
+        website={website}
+        company={company}
+      />
     </ProfileGrid>
   );
 };
