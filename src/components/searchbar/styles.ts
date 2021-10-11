@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import SearchIcon from '../../assets/icon-search.svg';
 import { LightMode, DarkMode } from '../../shared/styles/themes';
+import { device } from '../../shared/media_query_breakpoints';
 const SearchBarContainer = styled.div<{ bg: string }>`
   position: relative;
   display: flex;
@@ -10,11 +11,33 @@ const SearchBarContainer = styled.div<{ bg: string }>`
   background-color: ${(props) => props.bg};
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 8px;
+  @media ${device.mobileL} {
+  }
+
+  @media ${device.tablet} {
+  }
+  @media ${device.laptop} {
+  }
+  @media ${device.laptopL} {
+  }
 `;
 const SearchBarIcon = styled.img.attrs<{ placeHolderClr: string }>((props) => ({
   src: SearchIcon,
 }))`
   height: 16px;
+  @media ${device.mobileL} {
+    height: 20px;
+  }
+
+  @media ${device.tablet} {
+    height: 24px;
+  }
+  @media ${device.laptop} {
+    height: 28px;
+  }
+  @media ${device.laptopL} {
+    height: 32px;
+  }
 `;
 
 const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) => ({
@@ -23,7 +46,7 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
   flex-grow: 4;
   border: none;
   background: transparent;
-  margin-left: 6px;
+  margin-left: 12px;
   color: inherit;
   font-size: 0.75rem;
   &:focus {
@@ -31,6 +54,20 @@ const SearchBarInput = styled.input.attrs<{ placeHolderClr: string }>((props) =>
   }
   &::placeholder {
     color: ${(props) => props.placeHolderClr};
+  }
+
+  @media ${device.mobileL} {
+    font-size: 1rem;
+  }
+
+  @media ${device.tablet} {
+    font-size: 1.25rem;
+  }
+  @media ${device.laptop} {
+    font-size: 1.5rem;
+  }
+  @media ${device.laptopL} {
+    font-size: 2rem;
   }
 `;
 
@@ -57,6 +94,20 @@ const SearchBarButton = styled.button<{ btnClr: string }>`
   &:hover {
     cursor: pointer;
     filter: sepia(0.25);
+  }
+
+  @media ${device.mobileL} {
+    font-size: 1rem;
+  }
+
+  @media ${device.tablet} {
+    font-size: 1.25rem;
+  }
+  @media ${device.laptop} {
+    font-size: 1.5rem;
+  }
+  @media ${device.laptopL} {
+    font-size: 1.75rem;
   }
 `;
 
