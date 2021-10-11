@@ -5,6 +5,7 @@ import company_icon from '../../../assets/icon-company.svg';
 import location_icon from '../../../assets/icon-location.svg';
 import website_icon from '../../../assets/icon-website.svg';
 import twitter_icon from '../../../assets/icon-twitter.svg';
+import { device } from '../../../shared/media_query_breakpoints';
 type Props = {
   themeMode: string;
   location: string | null;
@@ -52,6 +53,13 @@ const Wrapper = styled.footer<{ themeMode: string }>`
     filter: brightness(${(props) => (props.themeMode === 'dark' ? 0 : 1)})
       invert(${(props) => (props.themeMode === 'dark' ? 1 : 0)});
   }
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'location twitter'
+      'website company';
+  }
 `;
 
 const ProfileLinkItem = styled.div<{ gridArea: string }>`
@@ -64,6 +72,19 @@ const ProfileLinkItem = styled.div<{ gridArea: string }>`
 
 const ProfileLinkText = styled.a`
   font-size: 0.6rem;
+  @media ${device.mobileL} {
+    font-size: 0.8rem;
+  }
+
+  @media ${device.tablet} {
+    font-size: 1rem;
+  }
+  @media ${device.laptop} {
+    font-size: 1.2rem;
+  }
+  @media ${device.laptopL} {
+    font-size: 1.4rem;
+  }
 `;
 
 const ProfileLinkIcon = styled.span`
@@ -73,6 +94,23 @@ const ProfileLinkIcon = styled.span`
   margin-right: 6px;
   background-size: contain;
   background-repeat: no-repeat;
+  @media ${device.mobileL} {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media ${device.tablet} {
+    width: 22px;
+    height: 22px;
+  }
+  @media ${device.laptop} {
+    width: 26px;
+    height: 26px;
+  }
+  @media ${device.laptopL} {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const TwitterIcon = styled(ProfileLinkIcon)`

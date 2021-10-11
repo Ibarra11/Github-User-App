@@ -7,6 +7,7 @@ import Profile from './components/profile';
 import { DarkMode, LightMode } from './shared/styles/themes';
 import { GithubApiResponse, ThemeMode, Mode } from './shared/types';
 import font from './shared/styles/fonts';
+import { device } from './shared/media_query_breakpoints';
 
 function App() {
   const [mode, setMode] = useState<Mode>('light');
@@ -61,4 +62,18 @@ const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => (
   width: 90%;
   color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
+  border-radius: 12px;
+  @media ${device.mobileL} {
+    width: 80%;
+  }
+
+  @media ${device.tablet} {
+    width: 70%;
+  }
+  @media ${device.laptop} {
+    width: 60%;
+  }
+  @media ${device.laptopL} {
+    width: 50%;
+  }
 `;
