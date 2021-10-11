@@ -47,7 +47,7 @@ const Wrapper = styled.footer<{ themeMode: string }>`
   padding: 0;
   margin-bottom: 0;
   margin-top: 16px;
-  border: 1px solid red;
+
   span {
     filter: brightness(${(props) => (props.themeMode === 'dark' ? 0 : 1)})
       invert(${(props) => (props.themeMode === 'dark' ? 1 : 0)});

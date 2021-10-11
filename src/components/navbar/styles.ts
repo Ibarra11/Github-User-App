@@ -20,13 +20,13 @@ const NavText = styled.h1`
     font-size: 2.25rem;
   }
   @media (min-width: 992px) AND (max-width: 1199px) {
-    font-size: 1.85rem;
+    font-size: 2rem;
   }
   @media (min-width: 768px) AND (max-width: 991px) {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
   @media (min-width: 576px) AND (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 `;
 
@@ -34,8 +34,7 @@ const NavSwitchMode = styled.div<{ toggleColor: string; toggleHoverColor: string
   align-self: center;
   display: flex;
   color: ${(props) => props.toggleColor};
-  width: 100px;
-  height: 100%;
+
   align-items: center;
   justify-content: flex-end;
   &:hover {
@@ -55,13 +54,13 @@ const NavSwitchModeText = styled.span`
   letter-spacing: 0.1rem;
   font-size: 0.5rem;
   @media (min-width: 1200px) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   @media (min-width: 992px) AND (max-width: 1199px) {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   @media (min-width: 768px) AND (max-width: 991px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   @media (min-width: 576px) AND (max-width: 767px) {
     font-size: 0.75rem;
@@ -79,9 +78,9 @@ const NavSwitchModeIcon = styled.span<{ themeMode: Mode }>`
   bottom: 2px;
   margin-left: 8px;
   @media (min-width: 1200px) {
-    width: 36px;
-    height: 36px;
-    margin-left: 0.75rem;
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
   }
 
   @media (min-width: 992px) AND (max-width: 1199px) {

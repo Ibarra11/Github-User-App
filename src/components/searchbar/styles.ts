@@ -4,7 +4,6 @@ import { LightMode, DarkMode } from '../../shared/styles/themes';
 const SearchBarContainer = styled.div<{ bg: string }>`
   position: relative;
   display: flex;
-
   margin-top: 12px;
   align-items: center;
   padding: 4px 4px 4px 12px;
