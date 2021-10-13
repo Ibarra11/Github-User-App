@@ -10,27 +10,39 @@ type Props = {
   themeMode: string;
   location: string | null;
   twitter_username: string | null;
-  website: string | null;
+  blog: string | null;
   company: string | null;
 };
-const ProfileFooter = ({ themeMode, location, twitter_username, website, company }: Props) => {
+
+const ProfileFooter = ({ themeMode, location, twitter_username, blog, company }: Props) => {
   return (
     <Wrapper themeMode={themeMode}>
       <ProfileLinkItem gridArea={'location'}>
         <LocationIcon />
-        <ProfileLinkText>{location || 'Not Available'}</ProfileLinkText>
+        <ProfileLink link={null} as={'span'}>
+          {location || 'Not Available'}
+        </ProfileLink>
       </ProfileLinkItem>
       <ProfileLinkItem gridArea={'twitter'}>
         <TwitterIcon />
-        <ProfileLinkText>{twitter_username || 'Not Available'}</ProfileLinkText>
+        <ProfileLink
+          link={`https://twitter.com/${twitter_username}`}
+          as={twitter_username != null ? undefined : 'span'}
+        >
+          {twitter_username || 'Not Available'}
+        </ProfileLink>
       </ProfileLinkItem>
       <ProfileLinkItem gridArea={'website'}>
         <WebsiteIcon />
-        <ProfileLinkText>{website || 'Not Available'}</ProfileLinkText>
+        <ProfileLink link={blog} as={blog !== '' ? undefined : 'span'}>
+          {blog || 'Not Available'}
+        </ProfileLink>
       </ProfileLinkItem>
       <ProfileLinkItem gridArea={'company'}>
         <CompanyIcon />
-        <ProfileLinkText>{company || 'Not Available'}</ProfileLinkText>
+        <ProfileLink link={null} as={'span'}>
+          {company || 'Not Available'}
+        </ProfileLink>
       </ProfileLinkItem>
     </Wrapper>
   );
@@ -70,11 +82,22 @@ const ProfileLinkItem = styled.div<{ gridArea: string }>`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+
   grid-area: ${(p) => p.gridArea};
 `;
 
-const ProfileLinkText = styled.a`
+const ProfileLink = styled.a.attrs<{ link: string | null }>((p) => ({
+  href: p.link,
+}))<{ link: string | null }>`
   font-size: 0.6rem;
+  color: inherit;
+  &:link {
+    text-decoration: none;
+    &:hover {
+      text-decoration: revert;
+    }
+  }
+
   @media ${device.mobileL} {
     font-size: 0.8rem;
   }
@@ -94,7 +117,7 @@ const ProfileLinkIcon = styled.span`
   display: inline-block;
   height: 14px;
   width: 14px;
-  margin-right: 6px;
+  margin: 0 8px;
   background-size: contain;
   background-repeat: no-repeat;
   @media ${device.mobileL} {

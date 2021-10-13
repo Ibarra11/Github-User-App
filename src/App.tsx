@@ -42,7 +42,7 @@ const Container = styled.div.attrs<ThemeMode, { bg: string }>((props) => ({
   bg: props.theme.mode === 'light' ? props.theme.lm_primary_grey : props.theme.dm_primary_dark_blue,
 }))`
   display: flex;
-  height: 100%;
+  min-height: 100%;
   justify-content: center;
   background-color: ${(props) => props.bg};
   align-items: flex-start;
@@ -53,7 +53,7 @@ const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => (
     props.theme.mode === 'light' ? props.theme.lm_primary_black : props.theme.dm_primary_white,
 }))`
   width: 90%;
-  padding-top: 5%;
+  padding: 5% 0;
   color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
   border-radius: 12px;

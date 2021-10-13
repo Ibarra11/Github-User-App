@@ -35,9 +35,6 @@ const ProfileGrid = styled.div.attrs<
   p {
     color: ${(props) => props.fontColor};
   }
-  h3 {
-    color: ${(props) => props.usernameFontColor};
-  }
 `;
 
 const ProfileAvatar = styled.img`

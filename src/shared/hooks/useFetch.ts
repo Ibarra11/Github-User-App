@@ -19,6 +19,7 @@ const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
           throw new Error('No results');
         }
         const data = (await response.json()) as TResponse;
+        console.log(data);
         setData(data);
         setStatus(Status.resolved);
         setStatus(Status.idle);

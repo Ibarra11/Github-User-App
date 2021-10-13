@@ -15,7 +15,6 @@ type GithubApiParamaters = {
   followers: number;
   following: number;
   created_at: string;
-  website: string;
 };
 
 type Nullable<T> = {

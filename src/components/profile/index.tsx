@@ -17,34 +17,39 @@ const Profile = ({ userData, theme }: { userData: GithubApiResponse; theme: Them
     following,
     location,
     twitter_username,
-    website,
+    blog,
     company,
   } = userData;
 
   let statsBg;
   let profileBg;
-  let profileUsernameColor;
+  let usernameColor;
   if (theme.mode === 'light') {
     profileBg = theme.lm_primary_white;
     statsBg = theme.lm_primary_grey;
-    profileUsernameColor = theme.lm_primary_blue;
+    usernameColor = theme.lm_primary_blue;
   } else {
     profileBg = theme.dm_secondary_blue;
     statsBg = theme.dm_primary_dark_blue;
-    profileUsernameColor = theme.dm_primary_blue;
+    usernameColor = theme.dm_primary_blue;
   }
 
   return (
     <ProfileGrid bgColor={profileBg} theme={theme}>
       <ProfileAvatar src={avatar_url as string} />
-      <ProfileHeader name={name} username={login} joinDate={created_at} />
+      <ProfileHeader
+        name={name}
+        username={login}
+        joinDate={created_at}
+        usernameColor={usernameColor}
+      />
       <ProfileBio>{bio || 'This Profile has no Bio'}</ProfileBio>
       <ProfileStats bg={statsBg} repos={public_repos} followers={followers} following={following} />
       <ProfileFooter
         themeMode={theme.mode}
         location={location}
         twitter_username={twitter_username}
-        website={website}
+        blog={blog}
         company={company}
       />
     </ProfileGrid>

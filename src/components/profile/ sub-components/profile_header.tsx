@@ -5,8 +5,9 @@ type Props = {
   name: string | null;
   username: string | null;
   joinDate: string | null;
+  usernameColor: string;
 };
-const ProfileHeader = ({ name, username, joinDate }: Props) => {
+const ProfileHeader = ({ name, username, joinDate, usernameColor }: Props) => {
   function formatJoinDate(date: string) {
     return new Date(date)
       .toDateString()
@@ -26,7 +27,9 @@ const ProfileHeader = ({ name, username, joinDate }: Props) => {
   return (
     <Wrapper>
       <ProfileHeadingMain>{name || username}</ProfileHeadingMain>
-      <ProfileHeadingUsername>@{username}</ProfileHeadingUsername>
+      <ProfileHeadingUsername href={`https://github.com/${username}`} usernameColor={usernameColor}>
+        @{username}
+      </ProfileHeadingUsername>
       <ProfileHeadingDate>Joined {formattedDate}</ProfileHeadingDate>
     </Wrapper>
   );
@@ -76,10 +79,15 @@ const ProfileHeadingDate = styled.p`
   }
 `;
 
-const ProfileHeadingUsername = styled.h3`
+const ProfileHeadingUsername = styled.a<{ usernameColor: string }>`
   margin: 0;
   font-size: 0.5rem;
-
+  color: ${(p) => p.usernameColor};
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: revert;
+  }
   @media ${device.mobileL} {
     font-size: 0.75rem;
   }
