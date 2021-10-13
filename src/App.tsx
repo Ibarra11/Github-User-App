@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import GlobalStyles from './shared/styles/global';
+
 import NavBar from './components/navbar';
 import SearchBar from './components/searchbar';
 import Profile from './components/profile';
@@ -27,7 +27,6 @@ function App() {
 
   return (
     <Container theme={theme}>
-      <GlobalStyles />
       <Content theme={theme}>
         <NavBar theme={theme} toggleTheme={handleThemeChange} />
         <SearchBar theme={theme} handleUserRequest={setUserData} />
@@ -42,27 +41,23 @@ export default App;
 const Container = styled.div.attrs<ThemeMode, { bg: string }>((props) => ({
   bg: props.theme.mode === 'light' ? props.theme.lm_primary_grey : props.theme.dm_primary_dark_blue,
 }))`
-  width: 100vw;
-  height: 100vh;
-  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: center;
   background-color: ${(props) => props.bg};
+  align-items: flex-start;
 `;
 
 const Content = styled.div.attrs<ThemeMode, { font_color: string }>((props) => ({
   font_color:
     props.theme.mode === 'light' ? props.theme.lm_primary_black : props.theme.dm_primary_white,
 }))`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  padding-top: 5%;
   width: 90%;
+  padding-top: 5%;
   color: ${(props) => props.font_color};
   font-family: ${`${font.mono} ${font.base}`};
   border-radius: 12px;
+
   @media ${device.mobileL} {
     width: 80%;
   }

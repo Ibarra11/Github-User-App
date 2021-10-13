@@ -60,6 +60,9 @@ const Wrapper = styled.footer<{ themeMode: string }>`
       'location twitter'
       'website company';
   }
+  @media ${device.laptop} {
+    grid-column: 2/3;
+  }
 `;
 
 const ProfileLinkItem = styled.div<{ gridArea: string }>`

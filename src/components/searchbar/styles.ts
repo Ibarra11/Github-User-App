@@ -5,21 +5,12 @@ import { device } from '../../shared/media_query_breakpoints';
 const SearchBarContainer = styled.div<{ bg: string }>`
   position: relative;
   display: flex;
-  margin-top: 12px;
+  margin-top: 36px;
   align-items: center;
   padding: 4px 4px 4px 12px;
   background-color: ${(props) => props.bg};
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 8px;
-  @media ${device.mobileL} {
-  }
-
-  @media ${device.tablet} {
-  }
-  @media ${device.laptop} {
-  }
-  @media ${device.laptopL} {
-  }
 `;
 const SearchBarIcon = styled.img.attrs<{ placeHolderClr: string }>((props) => ({
   src: SearchIcon,

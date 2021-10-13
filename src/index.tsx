@@ -1,11 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Normalize } from 'styled-normalize';
+import { normalize } from 'styled-normalize';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+
+  body,html{
+    height: 100%;
+    width: 100%;
+  }
+
+  #root{
+    height: 100%;
+  }
+`;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Normalize />
+    <GlobalStyle />
     <App />
   </React.StrictMode>,
   document.getElementById('root'),

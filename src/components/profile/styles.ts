@@ -19,9 +19,9 @@ const ProfileGrid = styled.div.attrs<
   bgColor: string;
   theme: ThemeMode;
 }>`
-  min-height: 300px;
   background-color: ${(props) => props.bgColor};
   display: grid;
+
   padding: 24px 16px;
   padding-bottom: 48px;
   grid-template-columns: 1fr 3fr;
@@ -72,6 +72,7 @@ const ProfileBio = styled.p`
   }
   @media ${device.laptop} {
     font-size: 1.5rem;
+    grid-column: 2/3;
   }
   @media ${device.laptopL} {
     font-size: 1.5rem;

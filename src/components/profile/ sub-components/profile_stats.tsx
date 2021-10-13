@@ -30,6 +30,9 @@ const Wrapper = styled.div<{ bg: string }>`
   display: flex;
   grid-column: 1/3;
   background-color: ${(props) => props.bg};
+  @media ${device.laptop} {
+    grid-column: 2/3;
+  }
 `;
 const ProfileStatItem = styled.div`
   flex-grow: 1;
