@@ -41,7 +41,7 @@ export type NavbarProps = {
   theme: ThemeMode;
 };
 
-export type Mode = 'light' | 'dark';
+export type Mode = 'light' | 'dark' | undefined;
 
 type DarkMode = {
   mode: 'dark';

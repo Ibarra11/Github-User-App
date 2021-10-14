@@ -8,9 +8,13 @@ import { DarkMode, LightMode } from './shared/styles/themes';
 import { GithubApiResponse, ThemeMode, Mode } from './shared/types';
 import font from './shared/styles/fonts';
 import { device } from './shared/media_query_breakpoints';
+import usePreferredTheme from './shared/hooks/usePreferredTheme';
 
 function App() {
-  const [mode, setMode] = useState<Mode>('light');
+  const userPreferredTheme = usePreferredTheme();
+
+  const [mode, setMode] = useState<Mode>(userPreferredTheme);
+
   const [theme, setTheme] = useState<ThemeMode>(LightMode);
   const [userData, setUserData] = useState<GithubApiResponse | null>(null);
   function handleThemeChange() {
