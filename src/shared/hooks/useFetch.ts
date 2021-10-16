@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Status } from '../types';
-const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
+const useFetch = <TResponse>(url: string, config?: RequestInit) => {
   const [data, setData] = useState<TResponse>();
   const [status, setStatus] = useState<Status>(Status.idle);
   const [error, setError] = useState('');
+
   useEffect(() => {
     /* 
             When the consumer hooks into this hook, useEffect will run once by default. We don't want to 
@@ -18,7 +19,7 @@ const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
           throw new Error('No results');
         }
         const data = (await response.json()) as TResponse;
-        console.log(data);
+
         setData(data);
         setStatus(Status.resolved);
         setStatus(Status.idle);
