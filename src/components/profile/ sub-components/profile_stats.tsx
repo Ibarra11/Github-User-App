@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { device } from '../../../shared/media_query_breakpoints';
 type Props = {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SearchIcon from '../../assets/icon-search.svg';
-import { LightMode, DarkMode } from '../../shared/styles/themes';
+import { LightMode } from '../../shared/styles/themes';
 import { device } from '../../shared/media_query_breakpoints';
 const SearchBarContainer = styled.div<{ bg: string }>`
   position: relative;

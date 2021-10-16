@@ -1,4 +1,4 @@
-import styled, { ThemeConsumer } from 'styled-components';
+import styled from 'styled-components';
 import { ThemeMode } from '../../shared/types';
 import { device } from '../../shared/media_query_breakpoints';
 const ProfileGrid = styled.div.attrs<

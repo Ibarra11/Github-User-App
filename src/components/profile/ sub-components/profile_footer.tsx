@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon } from '../../../shared/types';
+
 import company_icon from '../../../assets/icon-company.svg';
 import location_icon from '../../../assets/icon-location.svg';
 import website_icon from '../../../assets/icon-website.svg';

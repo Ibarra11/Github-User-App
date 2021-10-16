@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { Cache, Status } from '../types';
+import { useEffect, useState } from 'react';
+import { Status } from '../types';
 const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
-  const cache = useRef<Cache<TResponse>>({});
   const [data, setData] = useState<TResponse>();
   const [status, setStatus] = useState<Status>(Status.idle);
   const [error, setError] = useState('');
@@ -33,7 +32,7 @@ const useFetch = <TResponse>(url: string, config: RequestInit = {}) => {
     }
 
     fetchData();
-  }, [url]);
+  }, [url, config]);
 
   return [status, data, error] as const;
 };
